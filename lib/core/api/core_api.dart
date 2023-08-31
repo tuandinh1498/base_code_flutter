@@ -1,7 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:dio_cache_flutter_test/api/network_constanst.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
+
+import 'network_constanst.dart';
 
 class CustomDio {
   static CustomDio? _instance;
@@ -19,7 +20,10 @@ class CustomDio {
       baseUrl: NetworkConstants.baseUrl,
       connectTimeout: NetworkConstants.connectionTimeout,
       receiveTimeout: NetworkConstants.receiveTimeout,
-      headers: {},
+      headers: {
+        "X-Access-Token":
+        "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMTAyMTYwMCIsImlhdCI6MTY5MzAyNDgzNywiZXhwIjoxNjkzMTExMjM3LCJpc3MiOiJodHRwczovL3Rpa2kudm4iLCJjdXN0b21lcl9pZCI6IjExMDIxNjAwIiwiZW1haWwiOiJ0dWFuMTQwODE5OThAZ21haWwuY29tIiwiY2xpZW50X2lkIjoidGlraS1zc28iLCJuYW1lIjoiMTEwMjE2MDAiLCJzY29wZSI6InNzbyJ9.KGjqK-b-VnQvIh_eyn7O-IuGGfxN_0pvWekM3WlUzMsL4w4WC0MkXVMu9ksdjHWt3sB3LFUsFpd9W0bEub7zYqMBYIfmLoi9N9I-qlBe0bdogsCwdsoSpNzcp4MyEWK5CaoT8sX_dtAf0tgey4JVxpLkxERSo-Z1EXE-Ja5mWIOpwjCdcYlPwjIh9Gt5jC2nAPhgd1dkapj_MKU184tC0RvMM7Sac63RcbKq10Bv1naV_XnVhFWmIVH1CSWFXRoUD7qJHJx5D-k0BNIfHFAmVC4-Iwl5twITnJZr6VhEjpbKpWVVXObOsXCEkJIXd5liyGMaYMXhpez448NXd9ynuz4N2uhywxMep5SqKibqDh4ggfpa8yyT39EXIUKpTW9mePfCwmyzmwaVLvhyqPUeUbZo0HX8aSniduU3VMtj5Ih0J6qWGVqQxtbwHUcXktrSd2fcL7w1KwKq_vobxm0RxVJOZmasv0lzNiUat7XZ4fYppLk1VjWt5E0nCM9PYIZMnyDWudACmtHV6cbBAkOgQCkc_8B_tW2MEZCr9W2S96Z6scpR-SED5aZ5qnCh7fKPllP6zeyoytEDsfXg25uwPRuIEEn59lm5-1sFMG57D789-iB6In2fNSz5bMdK_0O90PVG0wbiQzlpkbyxzr_jcfrfa8YaYN6ANLwzKGbFNIY"
+      },
       contentType: 'application/json; charset=utf-8',
       responseType: ResponseType.json,
     );
@@ -41,9 +45,9 @@ class CustomDio {
       log("status code is: ${response.statusCode.toString()}");
       log(response.data.toString());
       return response;
-    } catch  (error) {
+    } catch (error) {
       log(error.toString());
-      throw error;
+      rethrow;
     }
   }
 
@@ -59,7 +63,7 @@ class CustomDio {
       print(response);
       return response;
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 
@@ -74,7 +78,7 @@ class CustomDio {
           data: body);
       return response;
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 

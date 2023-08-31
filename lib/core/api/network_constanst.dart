@@ -1,8 +1,8 @@
 class NetworkConstants {
   NetworkConstants._();
 
-  // base url
-  static const String baseUrl =  "https://dummyjson.com";
+  // base url  https://api-tigo.newweb.vn/  https://dummyjson.com/  https://tiki.vn/api/v2/directory/regions?country_id=vn
+  static const String baseUrl =  "https://tiki.vn/";
 
   // receiveTimeout
   static const int receiveTimeout = 15000;
